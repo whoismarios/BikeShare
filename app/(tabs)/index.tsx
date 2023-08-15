@@ -1,32 +1,32 @@
-import { StyleSheet } from 'react-native';
+import { ImageBackground, StyleSheet } from 'react-native';
 
 import EditScreenInfo from '../../components/EditScreenInfo';
 import { Text, View } from '../../components/Themed';
 import React from 'react';
 
+import { styles } from './../stylesheets/homeStyleSheet';
+import { ScrollView } from 'react-native-gesture-handler';
+
 export default function TabOneScreen() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/(tabs)/index.tsx" />
-    </View>
+    <>
+      <View>
+        <ImageBackground resizeMode='cover' source={require('./../../assets/images/Light.png')} style={styles.backgroundImage}>
+
+          <View style={styles.greating}>
+            <Text style={styles.title}>Hey, Wobin!</Text>
+          </View>
+
+          <Text style={styles.whatsNew}>What's new?</Text>
+
+          <ScrollView style={styles.newBikes} horizontal={false}>
+          
+          </ScrollView>
+          
+        </ImageBackground>
+      </View>
+    </>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
-  },
-});
+
