@@ -39,5 +39,6 @@ export const styles: any = StyleSheet.create({
         marginLeft: '10%',
         borderRadius: 10,
         marginBottom: '5%',
+        display: 'flex',
     }
 });

@@ -2,21 +2,27 @@ import { ImageBackground, Linking, Pressable, StyleSheet } from 'react-native';
 
 import EditScreenInfo from '../../components/EditScreenInfo';
 import { Text, View } from '../../components/Themed';
-import React from 'react';
+import React, { useState } from 'react';
 
 import { styles } from './../stylesheets/homeStyleSheet';
 import { ScrollView } from 'react-native-gesture-handler';
+
+import NewItem from '../../components/newItem/NewItem';
+
 
 async function Ricky() {
   // open a browser with youtube
   const link: String = await Linking.openURL('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
 }
 
+
+
 export default function TabOneScreen() {
+
   return (
     <>
       <View>
-        <ImageBackground resizeMode='cover' source={require('./../../assets/images/bike-blur.png')} style={styles.backgroundImage}>
+        <ImageBackground resizeMode='cover' source={require('./../../assets/images/mtb.webp')} style={styles.backgroundImage}>
 
           <Pressable onPress={Ricky} style={styles.greating}>
             <Text style={styles.title}>Hey, Wobin!</Text>
@@ -24,8 +30,14 @@ export default function TabOneScreen() {
 
           <Text style={styles.whatsNew}>What's new?</Text>
 
-          <ScrollView style={styles.newBikes} horizontal={false}>
-          
+          <ScrollView style={styles.newBikes} horizontal={true} bounces={true} >
+
+            <NewItem />
+            <NewItem />
+            <NewItem />
+            <NewItem />
+            <NewItem />
+            
           </ScrollView>
           
         </ImageBackground>
