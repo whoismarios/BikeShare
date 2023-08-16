@@ -9,13 +9,12 @@ import { ScrollView } from 'react-native-gesture-handler';
 
 import NewItem from '../../components/newItem/NewItem';
 
+import { newBikes } from '../../app/dummyData/newBike'
 
 async function Ricky() {
   // open a browser with youtube
   const link: String = await Linking.openURL('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
 }
-
-
 
 export default function TabOneScreen() {
 
@@ -32,11 +31,11 @@ export default function TabOneScreen() {
 
           <ScrollView style={styles.newBikes} horizontal={true} bounces={true} >
 
-            <NewItem />
-            <NewItem />
-            <NewItem />
-            <NewItem />
-            <NewItem />
+            {newBikes.map((bike) => {
+              return (
+                <NewItem key={bike.id} bike={bike}  />
+              );
+            })}
             
           </ScrollView>
           

@@ -1,17 +1,21 @@
-import React, { useState } from "react";
-import { View, Text, Modal } from "react-native";
+import React from "react";
+import { View, Text, Modal, Pressable, Image } from "react-native";
 import { styles } from "./offerModalStyleSheet";
 
-export default function OfferModal(props: { visible: boolean | undefined; }){
+export default function OfferModal(props: { visible: boolean; onClose: () => void; }) {
     return (
-        <>
-           <Modal animationType="fade" visible={props.visible}>
+        <Modal transparent= {true} style={styles.modal} animationType="slide" visible={props.visible}>
             
-            <View>
-                <Text style={styles.offerModalTitel}>Offer Modal</Text>
-            </View>
+            <View style={styles.smallModal}>
+            <Image style={styles.backgroundImage} source={require('../../../assets/images/blur.png')}  />
 
-           </Modal>
-        </>
+                <View style={styles.offerModalContent}>
+                    <Text style={styles.offerModalTitel}>Offer Modal</Text>
+                    <Pressable onPress={props.onClose}>
+                        <Image source={require('../../../assets/images/close.png')} style={styles.closeIcon} />
+                    </Pressable>
+                </View>
+            </View>
+        </Modal>
     );
 }
