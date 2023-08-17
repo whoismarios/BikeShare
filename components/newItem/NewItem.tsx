@@ -9,6 +9,7 @@ export default function NewItem({ bike }: {bike: Bike}) {
 
   const toggleVisibility = () => {
     setVisibility(!isVisible);
+    console.log('function called')
   }
 
   const closeModal = () => {
@@ -30,7 +31,7 @@ export default function NewItem({ bike }: {bike: Bike}) {
         width={100}
       >
 
-        <OfferModal visible={isVisible} onClose={closeModal} />
+        <OfferModal bike={bike} visible={isVisible} onClose={closeModal} />
 
         <Image
           key={bike.id}
