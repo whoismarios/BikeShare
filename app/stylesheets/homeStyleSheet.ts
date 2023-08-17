@@ -34,7 +34,7 @@ export const styles: any = StyleSheet.create({
         marginTop: '5%',
     },
     newBikes: {
-        backgroundColor: 'rgba(255,255,255,0.8)',
+        backgroundColor: 'rgba(255,255,255,0.6)',
         width: '80%',
         marginLeft: '10%',
         borderRadius: 10,
