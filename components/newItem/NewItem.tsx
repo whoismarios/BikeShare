@@ -9,7 +9,6 @@ export default function NewItem({ bike }: {bike: Bike}) {
 
   const toggleVisibility = () => {
     setVisibility(!isVisible);
-    console.log('function called')
   }
 
   const closeModal = () => {
@@ -42,6 +41,7 @@ export default function NewItem({ bike }: {bike: Bike}) {
 
         <View style={styles.diamond}>
           <View style={styles.diamond2}>
+            
             <Text style={styles.name}>{bike.name}</Text>
 
             <View style={styles.priceBox}>
