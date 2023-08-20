@@ -16,7 +16,7 @@ export default function OfferModal(props: { visible: boolean; onClose: () => voi
         name: React.ComponentProps<typeof FontAwesome>['name'];
         color: string;
       }) {
-        return <FontAwesome size={28} style={{ marginBottom: -3 }} {...props} />;
+        return <FontAwesome size={28} style={{ marginBottom: -3, borderRadius: 20, }} {...props} />;
       }
 
    
@@ -68,11 +68,30 @@ export default function OfferModal(props: { visible: boolean; onClose: () => voi
                     </View>
 
                     <ScrollView style={styles.bikeInfo} bounces={true}>
+
                         <Text style={styles.bikeTitel}>{props.bike.name}</Text>
-                        <Text style={styles.bikePricePerDay}><TabBarIcon name="dollar" color="black"/> Price Per Day: {props.bike.pricePerDay}$</Text>
-                        <Text style={styles.bikePricePerWeek}><TabBarIcon name="dollar" color="black"/> Price Per Week: {props.bike.pricePerWeek}$</Text>
+
+                        <View style={styles.bikeCompanyDurationSelection}>
+
+                          <View style={styles.priceBox}>
+                            <TabBarIcon name="dollar" color="black"/> 
+                              <Text>{"\n"}</Text>
+                            <Text style={styles.innerText}>Price Per Day</Text>
+                              <Text>{"\n"}</Text>
+                            <Text style={styles.bikePricePerDay}>{props.bike.pricePerDay}$</Text>
+                          </View>
+
+                          <View style={styles.priceBox}>
+                            <TabBarIcon name="dollar" color="black"/> 
+                              <Text>{"\n"}</Text>
+                            <Text style={styles.innerText}>Price Per Week</Text>
+                              <Text>{"\n"}</Text>
+                              <Text style={styles.bikePricePerDay}>{props.bike.pricePerWeek}$</Text>
+                          </View>
+
+                        </View>
                         <Text style={styles.bikeDescription}>About the Bike:</Text>
-                        <Text style={styles.bikePricePerDay}>{props.bike.description}</Text>
+                        <Text style={styles.bikePricePerWeek}>{props.bike.description}</Text>
                         <Text style={styles.bikeDescription}>Pickup Location:</Text>
                         <MapView
                             initialRegion={{
@@ -85,7 +104,7 @@ export default function OfferModal(props: { visible: boolean; onClose: () => voi
                         />
                         <Text style={styles.bikeDescription}>Pickup Date:</Text>
                         <View style={styles.datePickerContainer}>
-                            <Text style={styles.bikePricePerDay}>From:</Text>
+                            <Text style={styles.bikePricePerWeek}>From:</Text>
                             <DateTimePicker 
                                 themeVariant="light"
                                 display="spinner"
@@ -98,7 +117,7 @@ export default function OfferModal(props: { visible: boolean; onClose: () => voi
                         </View>
 
                         <View style={styles.datePickerContainer}>
-                            <Text style={styles.bikePricePerDay}>To:</Text>
+                            <Text style={styles.bikePricePerWeek}>To:</Text>
                             <DateTimePicker 
                                 themeVariant="light"
                                 display="spinner"
@@ -111,10 +130,10 @@ export default function OfferModal(props: { visible: boolean; onClose: () => voi
                         </View>
 
                         <View style={styles.priceContainer}>
-                            <Text style={styles.bikePricePerDay}><TabBarIcon name="dollar" color="gold"/> Total Price:</Text>
+                            <Text style={styles.bikePricePerWeek}><TabBarIcon name="dollar" color="gold"/> Total Price:</Text>
                             <Text style={styles.price}>{props.bike.pricePerDay}$</Text>
-                            <Text style={styles.bikePricePerDay}>inkl 19% Tax</Text>
-                            <Text style={styles.bikePricePerDay}>{((props.bike.pricePerDay/100)*19).toFixed(2)}$</Text>
+                            <Text style={styles.bikePricePerWeek}>inkl 19% Tax</Text>
+                            <Text style={styles.bikePricePerWeek}>{((props.bike.pricePerDay/100)*19).toFixed(2)}$</Text>
                         </View>
 
                         <View style={styles.container}>
