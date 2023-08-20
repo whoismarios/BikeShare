@@ -6,8 +6,9 @@ const screenWidth = Dimensions.get('window').width;
 export const styles: any = StyleSheet.create({
     newItem:{
         height: '80%',
-        width: screenWidth * 0.65,
-        marginLeft: screenWidth * 0.08,
+        width: screenWidth * 0.8,
+        marginLeft: screenWidth * 0.06,
+        marginRight: screenWidth * 0.06,
         borderRadius: 10,
         marginTop: '0.5%',
         overflow: 'hidden',
@@ -20,7 +21,7 @@ export const styles: any = StyleSheet.create({
     },
     name:{
         color: '#fff',
-        marginLeft: '15%',  
+        marginLeft: '20%',  
     },
     diamond: {
         width: '250%',
@@ -44,7 +45,7 @@ export const styles: any = StyleSheet.create({
         marginLeft: '20%',
         marginRight: '15%',
         position: 'relative',
-        height: '30%',
+        height: '25%',
         borderWidth: 1,
         borderColor: '#fff',
         borderRadius: 30,
@@ -53,7 +54,7 @@ export const styles: any = StyleSheet.create({
     },
     price:{
         color: 'rgb(45, 156, 219)',
-        fontSize: 30,
+        fontSize: 35,
         display: 'flex',
         textAlign: 'left',
         marginLeft: '5%',
@@ -62,16 +63,18 @@ export const styles: any = StyleSheet.create({
     },
     extras:{
         width: '100%',
-        marginLeft: '16%',
+        marginLeft: '20%',
     },
     extrasText:{
+        marginTop: '2%',
         color: '#fff',
+        fontSize: 10,
     },
     button:{
-        width: screenWidth * 0.45,
+        width: screenWidth * 0.65,
         height: 40,
-        marginTop: '2%',
-        marginLeft: '22.5%',
+        marginTop: '5%',
+        marginLeft: '21.5%',
         backgroundColor: 'white',
         borderRadius: 15,
     },

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, Image, ImageBackground, View, Pressable, Modal } from 'react-native';
+import { Text, Image, ImageBackground, View, Pressable } from 'react-native';
 import { styles } from './NewItemStyle';
 import OfferModal from '../../app/(modals)/offerModal/OfferModal';
 import { Bike } from '../../app/types/types';

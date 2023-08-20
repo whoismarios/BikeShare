@@ -34,10 +34,10 @@ export const styles: any = StyleSheet.create({
         marginTop: '5%',
     },
     newBikes: {
-        backgroundColor: 'rgba(255,255,255,0.6)',
-        width: '80%',
-        marginLeft: '10%',
-        borderRadius: 10,
+        backgroundColor: 'rgba(255,255,255,0.1)',
+        width: '100%',
+        marginLeft: '0%',
+        
         marginBottom: '5%',
         display: 'flex',
     }

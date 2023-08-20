@@ -10,3 +10,9 @@ export type Bike = {
     isRented: boolean;
     imagePath: ImageSourcePropType;
 };
+
+export type BikeCompanyType = {
+    id: number;
+    name: string;
+    imagePath: ImageSourcePropType;
+};
