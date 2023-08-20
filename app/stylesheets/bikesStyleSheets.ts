@@ -2,10 +2,14 @@ import React from "react";
 import { StyleSheet } from "react-native";
 
 export const styles: any = StyleSheet.create({
+    backgroundImage: {
+        width: '100%',
+        height: '100%',
+    },
     searchBar:{
         marginTop: '2.5%',
         marginBottom: '2.5%',
-        height: '7.5%',
+        height: '5%',
         width: '100%',
         backgroundColor: 'transparent',
         flexDirection: 'row',
@@ -15,11 +19,11 @@ export const styles: any = StyleSheet.create({
     },
     searchField:{
         height: '90%',
-        width: '80%',
+        width: '70%',
         backgroundColor: 'white',
         borderRadius: 30,
         marginLeft: '10%',
-        marginRight: '10%',
+        marginRight: '5%',
         display: 'flex',
         flexDirection: 'row',
         padding: 2,
@@ -31,7 +35,7 @@ export const styles: any = StyleSheet.create({
     bikeContainer:{
         height: '67.5%',
         width: '100%',
-        marginTop: '10%',
+        marginTop: '5%',
         
     },
     inputField:{
@@ -40,5 +44,21 @@ export const styles: any = StyleSheet.create({
         backgroundColor: 'transparent',
         color: 'black',
         fontSize: 25,
+    },
+    bikeSizeContainer:{
+        height: '5%',
+        width: '100%',
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        backgroundColor: 'rgba(255,255,255,0.8)',
+    },
+    bikeSizeText:{
+        marginLeft: '10%',
+        marginRight: '10%',
+        fontSize: 20,
+        backgroundColor: 'transparent',
+        color: 'black',
     },
 });

@@ -2,8 +2,8 @@ import { StyleSheet } from "react-native";
 
 export const styles: any = StyleSheet.create({
     bikeCompany:{
-        width: 85,
-        height: 85,
+        width: 75,
+        height: 75,
         borderRadius: 50,
         backgroundColor: 'white',
         display: 'flex',
@@ -17,9 +17,17 @@ export const styles: any = StyleSheet.create({
         height: 50,
         borderRadius: 50,
     },
-    name:{
-        color: 'rgb(45, 156, 219)',
+    bikeCompanyName:{
+        marginTop: 5,
+        color: 'black',
         fontSize: 12,
         textAlign: 'center',
+        
     },
+    bikeCompanyContainer:{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        backgroundColor: 'rgba(255,255,255,0.8)',
+    }
 });

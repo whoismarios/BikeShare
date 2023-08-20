@@ -1,4 +1,4 @@
-import { StyleSheet, TextInput } from 'react-native';
+import { ImageBackground, TextInput } from 'react-native';
 
 import EditScreenInfo from '../../components/EditScreenInfo';
 import { Text, View } from '../../components/Themed';
@@ -17,7 +17,7 @@ function TabBarIcon(props: {
     name: React.ComponentProps<typeof FontAwesome>['name'];
     color: string;
   }) {
-  return <FontAwesome size={45} {...props} />;
+  return <FontAwesome size={30} {...props} />;
 }
 
 
@@ -27,6 +27,7 @@ export default function TabThreeScreen() {
 
   return (
     <>
+    <ImageBackground resizeMode='cover' source={require('./../../assets/images/mtb.webp')} style={styles.backgroundImage}>
       <View style={styles.searchBar}>
         <View style={styles.searchField}>
            <TabBarIcon name="search" color="black" />
@@ -37,15 +38,24 @@ export default function TabThreeScreen() {
                       onChangeText={setSearchTerm} 
             />
         </View>
+        <TabBarIcon name="filter" color="white" />
+        
       </View>
 
-      <ScrollView style={styles.brandFilter} bounces={true} horizontal={true}>
+      <ScrollView style={styles.brandFilter} bounces={false} horizontal={true}>
         {bikeCompanyData.map((bikeCompany: BikeCompanyType) => {
           return (
             <BikeCompany key={bikeCompany.id} BikeCompany={bikeCompany} />
           );
         })}
       </ScrollView>
+
+      <View style={styles.bikeSizeContainer}>
+        <Text style={styles.bikeSizeText}>S</Text>
+        <Text style={styles.bikeSizeText}>M</Text>
+        <Text style={styles.bikeSizeText}>L</Text>
+        <Text style={styles.bikeSizeText}>XL</Text>
+      </View>
 
       <ScrollView style={styles.bikeContainer} bounces={true} horizontal={true}>
         {newBikes.map((bike) => {
@@ -54,6 +64,7 @@ export default function TabThreeScreen() {
           );
         })}
       </ScrollView>
+      </ImageBackground>
     </>
   );
 }
