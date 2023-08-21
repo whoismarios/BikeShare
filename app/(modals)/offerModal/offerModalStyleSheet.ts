@@ -1,4 +1,3 @@
-import React from "react";
 import { Dimensions, StyleSheet } from "react-native";
 
 const windowHeight = Dimensions.get('window').height;

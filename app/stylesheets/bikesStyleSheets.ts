@@ -1,6 +1,8 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 
+const filterOptionsVisible = false;
+
 export const styles: any = StyleSheet.create({
     backgroundImage: {
         width: '100%',
@@ -31,6 +33,7 @@ export const styles: any = StyleSheet.create({
     brandFilter:{
         height: '10%',
         width: '100%',
+        display: filterOptionsVisible ? 'flex' : 'none',
     },
     bikeContainer:{
         height: '67.5%',
@@ -48,11 +51,11 @@ export const styles: any = StyleSheet.create({
     bikeSizeContainer:{
         height: '5%',
         width: '100%',
-        display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
         backgroundColor: 'rgba(255,255,255,0.8)',
+        display: filterOptionsVisible ? 'flex' : 'none',
     },
     bikeSizeText:{
         marginLeft: '10%',
