@@ -30,6 +30,16 @@ export const bikeCompanyData: BikeCompanyType[] = [
         id: 5,
         name: "Santa Cruz",
         imagePath: require('../../assets/images/bike_companies/santacruz.png')
-    }
+    },
+    {
+        id: 6,
+        name: 'Haibike',
+        imagePath: require('../../assets/images/bike_companies/haibike.png')
+    },
+    {
+        id: 7,
+        name: 'Scott',
+        imagePath: require('../../assets/images/bike_companies/scott.png')
+    },
 ];
    

@@ -1,14 +1,14 @@
 import { ImageBackground, Pressable, TextInput, StyleSheet } from 'react-native';
 import { Text, View } from '../../components/Themed';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-import { ScrollView } from 'react-native-gesture-handler';
+import { ScrollView, FlatList } from 'react-native-gesture-handler';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import BikeCompany from '../../components/bikeCompany/bikeCompany';
 import { BikeCompanyType } from '../types/types';
 import { bikeCompanyData } from '../dummyData/bikeCompanyData';
 import { newBikes } from '../dummyData/newBike';
-import NewItem from '../../components/newItem/NewItem';
+import AllBikes from '../../components/allBikes/allBikes';
 
 function TabBarIcon(props: {
     name: React.ComponentProps<typeof FontAwesome>['name'];
@@ -24,6 +24,10 @@ export default function TabThreeScreen() {
 
   const [filterOptionsVisible, setFilterOptionsVisibility] = useState(false);
 
+  const [chosenSize, setChosenSize] = useState('');
+
+  const [filteredBikes, setFilteredBikes] = useState(newBikes);
+
   const toggleFilterOptionsVisibility = () => {
     setFilterOptionsVisibility(!filterOptionsVisible);
 
@@ -34,6 +38,37 @@ export default function TabThreeScreen() {
       styles.bikeSizeContainer.display = 'flex';
       styles.brandFilter.display = 'flex';
     }
+  }
+
+  function chooseSize(size: string){
+
+    if(size === "" || undefined || null){
+      setChosenSize("");
+
+      setFilteredBikes(newBikes);
+    }else{
+      setChosenSize(size);
+
+      const filteredBikes = newBikes.filter((bike) => {
+        return bike.size === size;
+      }
+      );
+
+      setFilteredBikes(filteredBikes);
+    }
+  }
+
+  function chooseCompany(brand: string){
+
+    const filteredBikes = newBikes.filter((bike) => {
+      if(chosenSize !== ""){
+        return bike.brand === brand;
+    }
+      return bike.brand === brand && bike.size === chosenSize;
+    }
+    );
+
+    setFilteredBikes(filteredBikes);
   }
 
   const styles: any = StyleSheet.create({
@@ -64,7 +99,7 @@ export default function TabThreeScreen() {
         padding: 2,
     },
     brandFilter:{
-        height: '10%',
+        height: '12.5%',
         width: '100%',
         display: filterOptionsVisible ? 'flex' : 'none',
     },
@@ -72,7 +107,6 @@ export default function TabThreeScreen() {
         height: '67.5%',
         width: '100%',
         marginTop: '5%',
-        
     },
     inputField:{
         height: '100%',
@@ -82,6 +116,7 @@ export default function TabThreeScreen() {
         fontSize: 25,
     },
     bikeSizeContainer:{
+        marginTop: '5%',
         height: '5%',
         width: '100%',
         flexDirection: 'row',
@@ -89,13 +124,21 @@ export default function TabThreeScreen() {
         justifyContent: 'space-between',
         backgroundColor: 'rgba(255,255,255,0.8)',
         display: filterOptionsVisible ? 'flex' : 'none',
+        borderTopWidth: 1,
+        borderBottomWidth: 1,
+        borderColor: 'black',
     },
     bikeSizeText:{
-        marginLeft: '10%',
-        marginRight: '10%',
-        fontSize: 20,
+        width: 50, 
+        marginLeft: '5%',
+        marginRight: '5%',
+        fontSize: 17,
         backgroundColor: 'transparent',
         color: 'black',
+        borderWidth: 1,
+        borderColor: 'black',
+        borderRadius: 5,
+        textAlign: 'center',
     },
 });
 
@@ -130,19 +173,36 @@ export default function TabThreeScreen() {
       </ScrollView>
 
       <View style={styles.bikeSizeContainer}>
-        <Text style={styles.bikeSizeText}>S</Text>
-        <Text style={styles.bikeSizeText}>M</Text>
-        <Text style={styles.bikeSizeText}>L</Text>
-        <Text style={styles.bikeSizeText}>XL</Text>
+
+        <Pressable onPress={() => chooseSize("S")}>
+          <Text style={styles.bikeSizeText}>S</Text>
+        </Pressable>
+        
+        <Pressable onPress={() => chooseSize("M")}>
+          <Text style={styles.bikeSizeText}>M</Text>
+        </Pressable>
+
+        <Pressable onPress={() => chooseSize("L")}>
+          <Text style={styles.bikeSizeText}>L</Text>
+        </Pressable>
+
+        <Pressable onPress={() => chooseSize("XL")}>
+          <Text style={styles.bikeSizeText}>XL</Text>
+        </Pressable>
+
+        <Pressable onPress={() => chooseSize("")}>
+          <Text style={styles.bikeSizeText}>All</Text>
+        </Pressable>
+
       </View>
 
-      <ScrollView style={styles.bikeContainer} bounces={true} horizontal={true}>
-        {newBikes.map((bike) => {
-          return (
-            <NewItem key={bike.id} bike={bike}  />
-          );
-        })}
-      </ScrollView>
+      <FlatList
+        style={styles.bikeContainer}
+        data={filteredBikes}
+        keyExtractor={(bike) => bike.id.toString()}
+        renderItem={({ item: bike }) => <AllBikes bike={bike} />}
+      />
+
       </ImageBackground>
     </>
   );

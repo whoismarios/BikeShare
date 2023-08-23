@@ -3,6 +3,7 @@ import { ImageSourcePropType } from "react-native";
 export type Bike = {
     id: number;
     name: string;
+    brand: string;
     size: string;
     description: string;
     pricePerDay: number;

@@ -73,7 +73,7 @@ export const styles: any = StyleSheet.create({
     button:{
         width: screenWidth * 0.65,
         height: 40,
-        marginTop: '5%',
+        marginTop: '2.5%',
         marginLeft: '21.5%',
         backgroundColor: 'white',
         borderRadius: 15,
@@ -82,5 +82,9 @@ export const styles: any = StyleSheet.create({
         color: 'rgb(45, 156, 219)',
         textAlign: 'center',
         fontSize: 30,
+    },
+    size:{
+        marginTop: 10,
+        color: '#fff',
     }
 });

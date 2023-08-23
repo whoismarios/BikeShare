@@ -50,6 +50,7 @@ export default function NewItem({ bike }: {bike: Bike}) {
             </View>
 
             <View style={styles.extras}>
+              <Text style={styles.size}>Size: {bike.size}</Text>
               <Text style={styles.extrasText}>{bike.description}</Text>
             </View>
 
