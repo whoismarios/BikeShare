@@ -2,6 +2,14 @@ import React, { useState } from 'react';
 import { Image, ImageBackground, Text, View, Modal, Pressable } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { styles } from '../stylesheets/profileStyleSheet';
+import RentalHistoryContent from '../(modals)/rentalHistory/rentalHistoryModal';
+import FavoritesListContent from '../(modals)/favorites/favoritesModal';
+
+const SavedPaymentContent = () => <Text>Saved Payment Content</Text>;
+const PointRewardsContent = () => <Text>Point Rewards Content</Text>;
+const HelpAndSupportContent = () => <Text>Help and Support Content</Text>;
+const PermissionsContent = () => <Text>Permissions Content</Text>;
+const ImprintAndDataProtectionContent = () => <Text>Imprint and Data Protection Content</Text>;
 
 export default function TabFourScreen() {
   const [modalVisible, setModalVisible] = useState(false);
@@ -26,6 +34,27 @@ export default function TabFourScreen() {
     'Permissions',
     'Imprint and Data Protection'
   ];
+
+  const getContentComponent = (content: string) => {
+    switch (content) {
+      case 'Rental History':
+        return <RentalHistoryContent />;
+      case 'Favorites List':
+        return <FavoritesListContent />;
+      case 'Saved Payment Information':
+        return <SavedPaymentContent />;
+      case 'Point Rewards':
+        return <PointRewardsContent />;
+      case 'Help and Support':
+        return <HelpAndSupportContent />;
+      case 'Permissions':
+        return <PermissionsContent />;
+      case 'Imprint and Data Protection':
+        return <ImprintAndDataProtectionContent />;
+      default:
+        return null;
+    }
+  };
 
   return (
     <>
@@ -59,10 +88,10 @@ export default function TabFourScreen() {
       >
         <View style={styles.modalContainer}>
           <View style={styles.modalContent}>
-            <Text>{selectedContent}</Text>
-            <Pressable onPress={closeModal}>
+            <Pressable onPress={closeModal} style={styles.closeButton}>
               <Text>Close</Text>
             </Pressable>
+            {getContentComponent(selectedContent)}
           </View>
         </View>
       </Modal>
