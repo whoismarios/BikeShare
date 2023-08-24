@@ -26,7 +26,11 @@ export default function TabThreeScreen() {
 
   const [chosenSize, setChosenSize] = useState('');
 
+  const [chosenBrand, setChosenBrand] = useState('');
+
   const [filteredBikes, setFilteredBikes] = useState(newBikes);
+
+  const [filterIsApplied, setFilterIsApplied] = useState(false);
 
   const toggleFilterOptionsVisibility = () => {
     setFilterOptionsVisibility(!filterOptionsVisible);
@@ -40,36 +44,28 @@ export default function TabThreeScreen() {
     }
   }
 
-  function chooseSize(size: string){
-
-    if(size === "" || undefined || null){
-      setChosenSize("");
-
-      setFilteredBikes(newBikes);
-    }else{
-      setChosenSize(size);
-
-      const filteredBikes = newBikes.filter((bike) => {
-        return bike.size === size;
-      }
-      );
-
-      setFilteredBikes(filteredBikes);
-    }
-  }
-
-  function chooseCompany(brand: string){
-
+  function applyFilters(selectedSize: string, selectedBrand: string) {
     const filteredBikes = newBikes.filter((bike) => {
-      if(chosenSize !== ""){
-        return bike.brand === brand;
-    }
-      return bike.brand === brand && bike.size === chosenSize;
-    }
-    );
+      const sizeCondition = selectedSize === "" || selectedSize === undefined || selectedSize === null || bike.size === selectedSize;
+      const brandCondition = selectedBrand === "" || selectedBrand === undefined || selectedBrand === null || bike.brand === selectedBrand;
+  
+      return sizeCondition && brandCondition;
+    });
 
+    if(chosenBrand && chosenSize === "" ){
+      setFilterIsApplied(false);
+    }else{
+      setFilterIsApplied(true);
+    }
+
+    setChosenSize(selectedSize);
+    setChosenBrand(selectedBrand);
+  
     setFilteredBikes(filteredBikes);
-  }
+  }  
+
+  useEffect(() => {
+  }, [chosenSize, chosenBrand]);
 
   const styles: any = StyleSheet.create({
     backgroundImage: {
@@ -99,7 +95,7 @@ export default function TabThreeScreen() {
         padding: 2,
     },
     brandFilter:{
-        height: '12.5%',
+        height: '15%',
         width: '100%',
         display: filterOptionsVisible ? 'flex' : 'none',
     },
@@ -116,7 +112,7 @@ export default function TabThreeScreen() {
         fontSize: 25,
     },
     bikeSizeContainer:{
-        marginTop: '5%',
+        marginTop: '2.5%',
         height: '5%',
         width: '100%',
         flexDirection: 'row',
@@ -140,12 +136,45 @@ export default function TabThreeScreen() {
         borderRadius: 5,
         textAlign: 'center',
     },
+    appliedFilterBox:{
+      height: '5%',
+      width: '100%',
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'flex-start',
+      backgroundColor: 'rgba(255,255,255,0.8)',
+      display: filterOptionsVisible ? 'flex' : 'none',
+      borderTopWidth: 1,
+      borderBottomWidth: 1,
+      borderColor: 'black',
+      marginTop: '2.5%',
+    },
+    appliedFilterText:{
+      width: 'auto', 
+      marginLeft: '5%',
+      marginRight: '5%',
+      fontSize: 17,
+      backgroundColor: 'transparent',
+      color: 'black',
+      textAlign: 'center',
+    },
+    appliedFilterButton:{
+      width: 'auto', 
+      marginLeft: '5%',
+      marginRight: '5%',
+      fontSize: 17,
+      backgroundColor: 'transparent',
+      color: 'black',
+      borderWidth: 1,
+      borderColor: 'black',
+      borderRadius: 5,
+      textAlign: 'center',
+      display: filterIsApplied ? 'flex' : 'none',
+    },
 });
 
 
   return (
-
-    
     <>
     <ImageBackground resizeMode='cover' source={require('./../../assets/images/mtb.webp')} style={styles.backgroundImage}>
       <View style={styles.searchBar}>
@@ -167,34 +196,50 @@ export default function TabThreeScreen() {
       <ScrollView style={styles.brandFilter} bounces={false} horizontal={true}>
         {bikeCompanyData.map((bikeCompany: BikeCompanyType) => {
           return (
-            <BikeCompany key={bikeCompany.id} BikeCompany={bikeCompany} />
+            <BikeCompany key={bikeCompany.id} BikeCompany={bikeCompany} onPress={() => applyFilters(chosenSize, bikeCompany.name)}/>
           );
         })}
       </ScrollView>
 
       <View style={styles.bikeSizeContainer}>
+  <Pressable onPress={() => applyFilters("S", chosenBrand)}>
+    <Text style={styles.bikeSizeText}>S</Text>
+  </Pressable>
+  
+  <Pressable onPress={() => applyFilters("M", chosenBrand)}>
+    <Text style={styles.bikeSizeText}>M</Text>
+  </Pressable>
 
-        <Pressable onPress={() => chooseSize("S")}>
-          <Text style={styles.bikeSizeText}>S</Text>
-        </Pressable>
-        
-        <Pressable onPress={() => chooseSize("M")}>
-          <Text style={styles.bikeSizeText}>M</Text>
-        </Pressable>
+  <Pressable onPress={() => applyFilters("L", chosenBrand)}>
+    <Text style={styles.bikeSizeText}>L</Text>
+  </Pressable>
 
-        <Pressable onPress={() => chooseSize("L")}>
-          <Text style={styles.bikeSizeText}>L</Text>
-        </Pressable>
+  <Pressable onPress={() => applyFilters("XL", chosenBrand)}>
+    <Text style={styles.bikeSizeText}>XL</Text>
+  </Pressable>
 
-        <Pressable onPress={() => chooseSize("XL")}>
-          <Text style={styles.bikeSizeText}>XL</Text>
-        </Pressable>
+  <Pressable onPress={() => applyFilters("", chosenBrand)}>
+    <Text style={styles.bikeSizeText}>All</Text>
+  </Pressable>
+</View>
 
-        <Pressable onPress={() => chooseSize("")}>
-          <Text style={styles.bikeSizeText}>All</Text>
-        </Pressable>
+<View style={styles.appliedFilterBox}>
 
-      </View>
+  <Text style={styles.appliedFilterText}>Applied Filters:</Text>
+
+  {chosenSize !== null && chosenSize !== undefined && (
+  <Pressable style={styles.appliedFilterButton} onPress={() => applyFilters("", chosenBrand)}>
+    <Text style={styles.appliedFilterText}>{chosenSize}</Text>
+  </Pressable>)}
+  
+
+  {chosenBrand !== null && chosenBrand !== undefined && (
+  <Pressable style={styles.appliedFilterButton} onPress={() => applyFilters(chosenSize, "")}>
+    <Text style={styles.appliedFilterText}>{chosenBrand}</Text>
+  </Pressable>)}
+
+</View>
+
 
       <FlatList
         style={styles.bikeContainer}

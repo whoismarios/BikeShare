@@ -16,4 +16,5 @@ export type BikeCompanyType = {
     id: number;
     name: string;
     imagePath: ImageSourcePropType;
+    onPress: () => void;
 };
