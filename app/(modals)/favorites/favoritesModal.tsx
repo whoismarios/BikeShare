@@ -6,7 +6,7 @@ import AllBikes from "../../../components/allBikes/allBikes";
 export default function FavoritesModal(){
     return(
         <>
-        <View style={styles.container}>
+            <View style={styles.container}>
                 <View style={styles.space}></View>
                 <Text style={styles.title}>Favorites</Text>
                 {/* TODO: Favorite Bikes Component */}

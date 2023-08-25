@@ -4,12 +4,12 @@ import { ScrollView } from 'react-native-gesture-handler';
 import { styles } from '../stylesheets/profileStyleSheet';
 import RentalHistoryContent from '../(modals)/rentalHistory/rentalHistoryModal';
 import FavoritesListContent from '../(modals)/favorites/favoritesModal';
+import ImprintAndDataProtectionContent from '../(modals)/imprintAndDataProtectionContent/imprintAndDataProtectionContentModal';
+import SavedPaymentInformationModal from '../(modals)/savedPaymentInformation/savedPaymentInformationModal';
 
-const SavedPaymentContent = () => <Text>Saved Payment Content</Text>;
 const PointRewardsContent = () => <Text>Point Rewards Content</Text>;
 const HelpAndSupportContent = () => <Text>Help and Support Content</Text>;
 const PermissionsContent = () => <Text>Permissions Content</Text>;
-const ImprintAndDataProtectionContent = () => <Text>Imprint and Data Protection Content</Text>;
 
 export default function TabFourScreen() {
   const [modalVisible, setModalVisible] = useState(false);
@@ -42,7 +42,7 @@ export default function TabFourScreen() {
       case 'Favorites List':
         return <FavoritesListContent />;
       case 'Saved Payment Information':
-        return <SavedPaymentContent />;
+        return <SavedPaymentInformationModal />;
       case 'Point Rewards':
         return <PointRewardsContent />;
       case 'Help and Support':

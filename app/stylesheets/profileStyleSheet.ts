@@ -75,13 +75,13 @@ export const styles = StyleSheet.create({
 
     },
     modalContainer: {
-        position: 'absolute',
+
         marginBottom: 0,
         justifyContent: 'flex-start',
       },
-      modalContent: {
+    modalContent: {
         bottom: 0, 
-        marginTop: '15%',
+        marginTop: '22.5%',
         width: '100%',
         height: '90%',
         padding: 20,
@@ -89,5 +89,5 @@ export const styles = StyleSheet.create({
         borderRadius: 10,
         justifyContent: 'center',
         alignItems: 'center',
-      },
+    },
 });
