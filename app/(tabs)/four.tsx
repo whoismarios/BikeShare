@@ -6,10 +6,9 @@ import RentalHistoryContent from '../(modals)/rentalHistory/rentalHistoryModal';
 import FavoritesListContent from '../(modals)/favorites/favoritesModal';
 import ImprintAndDataProtectionContent from '../(modals)/imprintAndDataProtectionContent/imprintAndDataProtectionContentModal';
 import SavedPaymentInformationModal from '../(modals)/savedPaymentInformation/savedPaymentInformationModal';
-
-const PointRewardsContent = () => <Text>Point Rewards Content</Text>;
-const HelpAndSupportContent = () => <Text>Help and Support Content</Text>;
-const PermissionsContent = () => <Text>Permissions Content</Text>;
+import PermissionsContent from '../(modals)/permissions/permissionsModal';
+import HelpAndSupportContent from '../(modals)/helpAndSupport/helpAndSupportModal';
+import PointRewardsContent from '../(modals)/pointsReward/pointsRewardModal';
 
 export default function TabFourScreen() {
   const [modalVisible, setModalVisible] = useState(false);

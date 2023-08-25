@@ -1,8 +1,7 @@
-import { ImageBackground, Linking, Pressable, StyleSheet } from 'react-native';
+import { ImageBackground, Linking, Pressable } from 'react-native';
 
-import EditScreenInfo from '../../components/EditScreenInfo';
 import { Text, View } from '../../components/Themed';
-import React, { useState } from 'react';
+import React from 'react';
 
 import { styles } from './../stylesheets/homeStyleSheet';
 import { ScrollView } from 'react-native-gesture-handler';
