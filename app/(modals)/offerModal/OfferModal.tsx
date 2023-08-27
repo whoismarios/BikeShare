@@ -43,11 +43,20 @@ export default function OfferModal(props: { visible: boolean; onClose: () => voi
         );
       };
 
-     
-
       const handleCheckboxChange = () => {
         setChecked(!isChecked);
       };
+
+      const [showModal, setShowModal] = useState(false);
+
+      const handleLikePress = () => {
+        setShowModal(true);
+      };
+
+      const closeModal = () => {
+        setShowModal(false);
+      };
+
 
     return (
         <Modal transparent= {true} style={styles.modal} animationType="slide" visible={props.visible}>
@@ -60,6 +69,27 @@ export default function OfferModal(props: { visible: boolean; onClose: () => voi
                     <Pressable onPress={props.onClose}>
                         <Image source={require('../../../assets/images/close.png')} style={styles.closeIcon} />
                     </Pressable>
+
+                    <Pressable onPress={handleLikePress}>
+                        <Image source={require('../../../assets/images/like.png')} style={styles.likeIcon} />
+                    </Pressable>
+
+                    <Modal
+                      animationType="fade"
+                      transparent={true}
+                      visible={showModal}
+                      onRequestClose={closeModal}
+                    >
+                      <View style={styles.modalContainer}>
+                        <Text style={styles.modalText}>
+                          Bike added to your wishlist!
+                        </Text>
+                        <Image source={require('../../../assets/images/checkmark.gif')} style={styles.checkmark} />
+                        <Pressable onPress={closeModal}>
+                          <Text style={styles.closeButtonText}>Close</Text>
+                        </Pressable>
+                      </View>
+                    </Modal>
 
                     <View style={styles.underlay}></View>
 
