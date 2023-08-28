@@ -78,5 +78,16 @@ export const newBikes: Bike[] = [
         isRented: false,
         imagePath: require('../../assets/images/scott_gravel.png')
     },
+    {
+        id: 8,
+        name: "Scott Solace Gravel",
+        brand: "Scott",
+        size: "L",
+        description: "Gravel Bike From Scott",
+        pricePerDay: 39,
+        pricePerWeek: 199,
+        isRented: false,
+        imagePath: require('../../assets/images/scott_gravel.png')
+    },
 ];
    
